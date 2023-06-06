@@ -68,7 +68,7 @@ namespace WebApiAdvance.Controllers
             }
             Product product = _mapper.Map<Product>(productdto);
             product.ProductCode = "TEst";
-            _context.Products.Update(product);
+            _context.Products?.Update(product);
             await _context.SaveChangesAsync();
             return NoContent();
         }

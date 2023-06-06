@@ -9,10 +9,10 @@ using WebApiAdvance.DAL.EfCore;
 
 #nullable disable
 
-namespace WebApiAdvance.DAL.Migrations
+namespace WebApiAdvance.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230605135750_init")]
+    [Migration("20230606201914_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,7 +34,7 @@ namespace WebApiAdvance.DAL.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("NVarChar");
 
                     b.HasKey("Id");
 
@@ -61,10 +61,15 @@ namespace WebApiAdvance.DAL.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
+
+                    b.Property<string>("ProductCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

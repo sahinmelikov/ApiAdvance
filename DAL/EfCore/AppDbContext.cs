@@ -1,11 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System.Data;
 using System.Reflection;
 using WebApiAdvance.Entities;
+using WebApiAdvance.Entities.Auth;
 
 namespace WebApiAdvance.DAL.EfCore;
 
-public class AppDbContext : DbContext
+public class AppDbContext : IdentityDbContext<AppUser>
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -29,6 +31,6 @@ public class AppDbContext : DbContext
 
         base.OnModelCreating(modelBuilder);
     }
-    public DbSet<Product> Products { get; set; }
-    public DbSet<Brand> Brands { get; set; }
+    public DbSet<Product>? Products { get; set; }
+    public DbSet<Brand>? Brands { get; set; }
 }
